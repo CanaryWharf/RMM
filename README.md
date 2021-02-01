@@ -1,4 +1,8 @@
-# rmm
+# Raj's Mod Manager
+
+Literally just a glorified rsync but takes instructions from a yaml on what to sync
+
+## Development
 
 ## Project setup
 ```
@@ -19,6 +23,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
