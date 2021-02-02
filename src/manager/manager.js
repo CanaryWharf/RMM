@@ -14,6 +14,7 @@ class ModManager {
   }
 
   listDirectory() {
+    console.log(this.folder);
     const filesInDirectory = fs.readdirSync(this.folder);
     return filesInDirectory;
   }

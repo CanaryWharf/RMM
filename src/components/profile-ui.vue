@@ -4,9 +4,13 @@
     <v-main v-if="createProfileOpen">
       <v-text-field v-model="profileName" label="Profile name"></v-text-field>
       <v-text-field v-model="profileUrl" label="Modpack Url"></v-text-field>
-      <!-- <input type="file" webkitdirectory @change="selectFile"/> -->
-      <v-file-input color="primary" :success="folderSuccess" label="Mods Folder" :hide-input="true" webkitdirectory @change="selectFile" />
-      <v-btn color="primary" @click="saveProfile">Save</v-btn>
+      <v-file-input color="primary"
+      :success="folderSuccess"
+      label="Mods Folder"
+      :hide-input="true"
+      webkitdirectory
+      @change="selectFile" />
+      <v-btn color="primary" @click="saveProfile" :disabled="disableSave">Save</v-btn>
     </v-main>
     <v-main v-if="profiles">
       <h2>Select Profile</h2>
@@ -44,6 +48,9 @@ export default {
     this.manager = new profileManager();
   },
   computed: {
+    disableSave() {
+      return !(this.profileName && this.profileUrl && this.profileFolder);
+    },
     newProfileIcon() {
       return this.createProfileOpen ? 'mdi-chevron-down' : 'mdi-chevron-right';
     },
@@ -68,6 +75,7 @@ export default {
       this.createProfileOpen = !this.createProfileOpen;
     },
     selectFile(ev) {
+      console.log(ev);
       this.profileFolder = path.dirname(ev.path);
       this.folderSuccess = true;
     },

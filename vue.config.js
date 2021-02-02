@@ -4,7 +4,13 @@ module.exports = {
   ],
   pluginOptions: {
     electronBuilder: {
-      nodeIntegration: true
+      outputDir: 'dist',
+      nodeIntegration: true,
+      builderOptions: {
+          "win": {
+            "target": "nsis"
+          }
+      }
     }
   }
 }
